@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface GradeRepository extends JpaRepository<Grade, String> {
+public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
-    List<Grade> getAllByStudentID(String studentID);
+    List<Grade> findByStudentID(String studentID);
 
 }

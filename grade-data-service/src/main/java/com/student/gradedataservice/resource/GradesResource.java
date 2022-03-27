@@ -1,5 +1,6 @@
 package com.student.gradedataservice.resource;
 
+import com.student.gradedataservice.model.Grade;
 import com.student.gradedataservice.model.StudentGrade;
 import com.student.gradedataservice.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,14 @@ public class GradesResource {
     @Autowired
     public GradeService service;
 
-    @GetMapping("/sid")
-    public StudentGrade getGrades(@RequestBody String studentID){
+    @GetMapping("/sid/{studentID}")
+    public StudentGrade getGrades(@PathVariable(name = "studentID") String studentID){
        return service.getGradeList(studentID);
+    }
+
+    @PostMapping("/addGrade")
+    public Grade addGrade(@RequestBody Grade grade){
+        return service.saveGradeInfo(grade);
     }
 
 }

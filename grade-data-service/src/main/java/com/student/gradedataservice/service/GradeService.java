@@ -1,5 +1,6 @@
 package com.student.gradedataservice.service;
 
+import com.student.gradedataservice.model.Grade;
 import com.student.gradedataservice.model.StudentGrade;
 import com.student.gradedataservice.repository.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,13 @@ public class GradeService {
     public GradeRepository repo;
 
     public StudentGrade getGradeList(String studentId){
-        StudentGrade sgrade = null;
-        sgrade.setGradeList(repo.getAllByStudentID(studentId));
+        StudentGrade sgrade = new StudentGrade();
+        sgrade.setGradeList(repo.findByStudentID(studentId));
         return sgrade;
+    }
+
+    public Grade saveGradeInfo(Grade grade){
+        return repo.save(grade);
     }
 
 }
