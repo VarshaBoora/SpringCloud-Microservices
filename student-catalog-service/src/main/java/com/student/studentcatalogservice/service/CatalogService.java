@@ -18,10 +18,10 @@ public class CatalogService {
 
     public List<CatalogItem> getCatalogItem(String studentID){
         StudentGrade grades = restTemplate.getForObject("http://grade-data-service/grade/sid/"+studentID, StudentGrade.class);
-
+        System.out.println(grades.getGradeList());
         return grades.getGradeList().stream().map(grade->{
-                    Course course = restTemplate.getForObject("http://course-info-service/courses/"+grade.getCourseID(),Course.class);
-                    return new CatalogItem(course.getCourseID(), course.getCourseName(), grade.getGrade());
+                    Course course = restTemplate.getForObject("http://course-info-service/courses/courseID/"+grade.getCourseID(),Course.class);
+                    return new CatalogItem(course.getCourseID(), course.getCourseName(), grade.getGrade(), grade.getStudentID());
                 })
                 .collect(Collectors.toList());
     }

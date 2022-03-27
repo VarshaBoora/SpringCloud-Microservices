@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/catalog")
+@RequestMapping("/")
 public class StudentCatalogResource {
 
     @Autowired
@@ -20,13 +20,9 @@ public class StudentCatalogResource {
     @Autowired
     private CatalogService service;
 
-    @GetMapping("/{studentID}")
-    public ResponseEntity<?> getCatalog(@RequestBody String studentID){
-        try{
-            return new ResponseEntity<List<CatalogItem>>(service.getCatalogItem(studentID), HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    @PostMapping("/catalog")
+    public ResponseEntity<?> getCatalog(@RequestBody CatalogItem catalogItem){
+            return new ResponseEntity<List<CatalogItem>>(service.getCatalogItem(catalogItem.getStudentID()), HttpStatus.OK);
     }
 
 }

@@ -2,28 +2,28 @@ package com.student.studentcatalogservice.models;
 
 public class Grade {
 
-    private String courseID;
+    private int courseID;
     private String studentID;
     private String grade;
 
     public Grade(){}
 
-    public Grade(String courseID, String studentID, String grade) {
+    public Grade(int courseID, String studentID, String grade) {
         this.courseID = courseID;
         this.studentID = studentID;
         this.grade = grade;
     }
 
-    public Grade(String courseID, String grade) {
+    public Grade(int courseID, String grade) {
         this.courseID = courseID;
         this.grade = grade;
     }
 
-    public String getCourseID() {
+    public int getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(String courseID) {
+    public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
 

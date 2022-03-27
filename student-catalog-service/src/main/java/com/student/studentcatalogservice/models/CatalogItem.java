@@ -6,13 +6,24 @@ public class CatalogItem {
     private String courseID;
     private String courseName;
     private String grade;
+    private String studentID;
 
-    public CatalogItem(){}
+    public CatalogItem(){
+    }
 
-    public CatalogItem(String courseID, String courseName, String grade) {
+    public CatalogItem(String courseID, String courseName, String grade, String studentID) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.grade = grade;
+        this.studentID = studentID;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
     }
 
     public String getCourseID() {
